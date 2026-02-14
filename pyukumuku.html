@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Pyukumuku San Valentín 💖</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(180deg, #ff9ecf, #ff5fa2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.card {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0,0,0,0.2);
+    animation: aparecer 2s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.pyukumuku {
+    width: 220px;
+    animation: flotar 3s ease-in-out infinite;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.2));
+}
+
+@keyframes flotar {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
+h1 {
+    color: white;
+    margin-top: 15px;
+}
+
+p {
+    color: white;
+    font-size: 18px;
+}
+
+/* corazones */
+.heart {
+    position: absolute;
+    bottom: -50px;
+    color: white;
+    font-size: 20px;
+    animation: subir 6s linear forwards;
+}
+
+@keyframes subir {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-120vh);
+        opacity: 0;
+    }
+}
+
+/* mini pyukumukus */
+.mini-pyukumuku {
+    position: absolute;
+    bottom: -60px;
+    animation: subirPyukumuku 8s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes subirPyukumuku {
+    from {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-120vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="card">
+
+<img src="C:/Users/Usuario/Downloads/pyukumukurmgr.png" class="pyukumuku">
+
+<h1>Feliz 14 de Febrero 💖</h1>
+
+<p>
+Como Pyukumuku...  
+puede que no diga mucho,  
+pero mi corazón está contigo ❤️
+</p>
+
+</div>
+
+<script>
+
+/* corazones */
+function crearCorazon() {
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+    heart.style.fontSize = (15 + Math.random() * 25) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+}
+
+/* mini pyukumukus */
+function crearPyukumuku() {
+
+    const p = document.createElement("img");
+
+    p.src = "C:/Users/Usuario/Downloads/pyukumukurmgr.png";
+
+    p.className = "mini-pyukumuku";
+
+    p.style.left = Math.random() * window.innerWidth + "px";
+
+    p.style.width = (30 + Math.random() * 40) + "px";
+
+    document.body.appendChild(p);
+
+    setTimeout(() => p.remove(), 8000);
+}
+
+/* intervalos */
+setInterval(crearCorazon, 300);
+setInterval(crearPyukumuku, 1200);
+
+</script>
+
+</body>
+</html>
